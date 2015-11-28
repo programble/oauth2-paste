@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>OAuth2 Authorization Callback</title>
+
+<p>Please copy this code, switch to your application and paste it there:</p>
+<input type="text" readonly style="width: 300px;">
+
+<script>
+  var input = document.getElementsByTagName('input')[0];
+  input.addEventListener('click', function() {
+    this.focus();
+    this.select();
+  });
+
+  var search = window.location.search.slice(1);
+  var pairs = search.split('&');
+  for (var i in pairs) {
+    var pair = pairs[i].split('=');
+    if (pair[0] === 'code') {
+      input.value = decodeURIComponent(pair[1]);
+    }
+  }
+</script>
